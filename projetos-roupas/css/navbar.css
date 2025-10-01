@@ -1,0 +1,43 @@
+.container {
+    margin: 50px auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container nav {
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+    gap: 90px;
+    text-decoration: none;
+}
+
+.container nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.container nav a:hover {
+    text-decoration: underline black;
+}
+
+.container img {
+    width: 50px;
+}
+
+.container img {
+    width: 50px;
+}
+
+.slogan img {
+    border-radius: 10px;
+    width: 100%;
+}
