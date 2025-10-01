@@ -18,13 +18,16 @@
 
 .produtos .box-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
     margin-top: 20px;
+    justify-content: flex-start;
 }
 
 .produtos .box-container .box {
-    width: 200px;
-    max-width: 200px;
+    width: calc(20% - 24px);
+    min-width: 200px;
+    flex: 0 0 calc(20% - 24px);
     text-decoration: none;
     text-align: center;
     padding: 15px;
@@ -54,7 +57,7 @@
 .produtos .box-container .box img {
     border-radius: 15px;
     width: 100%;
-    max-width: 180px;
+    max-width: 300px;
     height: auto;
 }
 
