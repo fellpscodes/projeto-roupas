@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaqueta Verde Adidas</title>
+    <link rel="stylesheet" href="../projetos-roupas/css/reset.css">
+    <link rel="stylesheet" href="../projetos-roupas/css/style.css">
+    <link rel="stylesheet" href="moletomstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="../projetos-roupas/index.html">Início</a>
+                <a href="moletons.html">Moletons</a>
+                <a href="../camisetas/camiseta.html">Camisetas</a>
+                <a href="../calcas/calcas.html">Calças</a>
+                <a href="../calcados/calcados.html">Calçados</a>
+            </nav>
+        </header>
+    </div>
+
+    <main class="product-page">
+        <div class="product-container">
+            <div class="product-image">
+                <img src="../images/moletons images/moletom6.avif" alt="" id="main-image">
+            </div>
+
+            <div class="product-info">
+                <h1>Jaqueta Verde Adidas</h1>
+                <p class="product-price">R$ 239,90</p>
+
+                <div class="color-selection">
+                    <h3>Cor: <span id="color-name">Verde</span></h3>
+                    <div class="color-options">
+                        <div class="color-option active" style="background-color: #0c5835;" data-color="Verde" data-image="../images/moletons images/moletom6.avif"></div>
+                    </div>
+                </div>
+
+                <div class="size-selection">
+                    <h3>Tamanho:</h3>
+                    <div class="size-options">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                    </div>
+                </div>
+
+                <div class="quantity-section">
+                    <h3>Quantidade:</h3>
+                    <div class="quantity-controls">
+                            <button class="qty-btn" data-action="decrease" type="button">-</button>
+                            <span id="quantity">1</span>
+                            <button class="qty-btn" data-action="increase" type="button">+</button>
+                        </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                    <button class="buy-now-btn">Comprar Agora</button>
+                </div>
+
+                <div class="payment-methods">
+                    <h3>Formas de Pagamento</h3>
+                    <p>Cartão de Crédito, Pix e Boleto Bancário.</p>
+                </div>
+
+                <div class="product-details">
+                    <h3>Detalhes do Produto</h3>
+                    <ul>
+                        <li>Material: 80% Algodão, 20% Poliéster</li>
+                        <li>Lavagem: Máquina até 30°C</li>
+                        <li>Origem: Brasil</li>
+                        <li>Garantia: 3 meses</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let selectedSize = '';
+            let quantity = 1;
+
+            const mainImage = document.getElementById('main-image');
+            const colorNameSpan = document.getElementById('color-name');
+            const colorOptions = document.querySelectorAll('.color-option');
+            const sizeButtons = document.querySelectorAll('.size-btn');
+            const qtyDisplay = document.getElementById('quantity');
+            const qtyButtons = document.querySelectorAll('.qty-btn');
+            const addToCartBtn = document.querySelector('.add-to-cart-btn');
+            const buyNowBtn = document.querySelector('.buy-now-btn');
+
+            // Seleção de cor
+            colorOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    colorOptions.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+                    mainImage.src = option.dataset.image;
+                    colorNameSpan.textContent = option.dataset.color;
+                });
+            });
+
+            // Seleção de tamanho
+            sizeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    sizeButtons.forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    selectedSize = btn.dataset.size;
+                });
+            });
+
+            // Quantidade
+            qtyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const action = button.dataset.action;
+                    if (action === 'increase') {
+                        quantity++;
+                    } else if (action === 'decrease' && quantity > 1) {
+                        quantity--;
+                    }
+                    qtyDisplay.textContent = quantity;
+                });
+            });
+
+            function validarSelecao() {
+                if (!selectedSize) {
+                    alert('Selecione um tamanho antes de continuar.');
+                    return false;
+                }
+                return true;
+            }
+
+            addToCartBtn.addEventListener('click', () => {
+                if (!validarSelecao()) return;
+                alert(`Produto adicionado ao carrinho!\nTamanho: ${selectedSize}\nCor: ${colorNameSpan.textContent}\nQuantidade: ${quantity}`);
+            });
+
+            buyNowBtn.addEventListener('click', () => {
+                if (!validarSelecao()) return;
+                alert(`Compra efetuada com sucesso!\nTamanho: ${selectedSize}\nCor: ${colorNameSpan.textContent}\nQuantidade: ${quantity}`);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
