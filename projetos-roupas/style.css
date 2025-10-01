@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+}
+.container nav{
+    justify-content: center;
+    display: flex;
+    gap: 90px;
+}
